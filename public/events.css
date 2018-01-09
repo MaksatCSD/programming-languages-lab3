@@ -1,0 +1,33 @@
+.event{
+    margin: 5px 0 0 0;
+    border: solid 2px;
+    display: -webkit-flex;
+    display: flex;
+}
+.date{
+    text-align: center;
+    -webkit-flex: initial;
+    flex: initial;
+    width: 100px;
+    min-width: 50px;
+    border-right: solid 2px;
+
+}
+.name{
+    -webkit-flex: initial;
+    flex: none;
+    width: 250px;
+    border-right: solid 2px;
+}
+.description{
+    -webkit-flex: 1;
+    flex: 1;
+}
+.attendees{
+    border-right: solid 2px;
+    border-bottom: solid 2px;
+    border-left: solid 2px;
+}
+p{
+    margin: 5px;
+}

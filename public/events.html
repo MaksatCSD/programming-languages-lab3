@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Languages lab 3</title>
+    <link type="text/css" rel="stylesheet" href="events.css" />
+</head>
+<body>
+    <h1 id="head" style="text-align: center">Cписок событий в городе </h1>
+    <div id="found">Найдено событий:</div>
+    <div class="event">
+        <div class="date"><p>Дата</p></div>
+        <div class="name"><p>Название события</p></div>
+        <div class="description"><p>Описание события</p></div>
+    </div>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('Get','data',false);
+        xhr.send();
+        if (xhr.status != 200) {
+            // обработать ошибку
+            alert(xhr.responseText);
+        } else {
+            var data = JSON.parse(xhr.responseText);
+            var a = document.getElementById('found');
+            a.innerHTML+=data.pagination.object_count;
+            a = document.getElementById('head');
+            a.innerHTML+=data.location.augmented_location.city;
+
+            a = data.events;
+            a.forEach(function (item, i) {
+                var div = document.createElement('div');
+                div.className = "event";
+                document.body.appendChild(div);
+
+                var div2 = document.createElement('div');
+                div2.className = 'date';
+                div.appendChild(div2);
+                var p = document.createElement('p');
+                p.innerHTML = item.start.local;
+                div2.appendChild(p);
+
+                div2 = document.createElement('div');
+                div2.className = 'name';
+                div.appendChild(div2);
+                var p = document.createElement('p');
+                p.innerHTML = item.name.text;
+                div2.appendChild(p);
+
+                div2 = document.createElement('div');
+                div2.className = 'description';
+                div.appendChild(div2);
+                var p = document.createElement('p');
+                p.innerHTML = item.description.text;
+                div2.appendChild(p);
+            })
+
+            }
+    </script>
+
+</body>
+</html>

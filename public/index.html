@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Languages lab 3</title>
+        <link type="text/css" rel="stylesheet" href="index.css" />
+    </head>
+    <body>
+        <div class="main">
+            <h1>Поиск собыйтий связанных с IT в промежутке времени</h1>
+            <form class="form" action="/search" onsubmit="func()">
+                <span style="float: left">Город:</span><input type="text" name="title" value="Boston">
+                <span style="float: left">С даты:</span><input id="d1" type="text" name="title" value="01.01.2018">
+                <span style="float: left">По дату:</span><input id="d2" type="text" name="title" value="день.месяц.год">
+                <span style="float: left">Дистанция:</span><input type="text" name="title" value="число без км">
+                <button class="button" type="submit">Найти!</button>
+            </form>
+        </div>
+    <script>
+        function func () {
+            d1.value = convert(d1.value);
+            d2.value = convert(d2.value);
+        }
+        function convert(date) {
+           var a = date.split('.');
+           return a[2]+'-'+a[1]+'-'+a[0]+'T00:00:00';
+
+        }
+    </script>
+    </body>
+</html>
